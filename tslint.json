@@ -1,0 +1,29 @@
+{
+  "extends": ["tslint:recommended", "tslint-react", "tslint-config-prettier"],
+  "linterOptions": {
+    "exclude": [
+      "config/**/*.js",
+      "node_modules/**/*.ts",
+      "coverage/lcov-report/*.js",
+      "typings/*.ts",
+      "src/serviceWorker.ts"
+    ]
+  },
+  "rules": {
+    "variable-name": [
+      true,
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore",
+      "allow-pascal-case"
+    ],
+    "no-console": [true, "log"],
+    "no-debugger": true,
+    "quotemark": [true, "single", "avoid-escape", "jsx-double"],
+    "object-literal-sort-keys": false,
+    "sort-imports": false,
+    "ordered-imports": false,
+    "no-string-literal": false,
+    "jsx-no-lambda": false
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "name": "wilma-webapp",
+  "version": "0.1.0",
+  "private": true,
+  "bin": {
+    "husky-run": "./run.js",
+    "husky-upgrade": "./lib/upgrader/bin.js"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.2.1",
+    "@material-ui/icons": "^4.2.1",
+    "classnames": "^2.2.6",
+    "connected-react-router": "^6.4.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-modal": "^3.8.1",
+    "react-redux": "^7.0.3",
+    "react-router-dom": "^5.0.0",
+    "react-scripts": "3.0.1",
+    "react-switch": "^5.0.0",
+    "react-toastify": "^5.3.0",
+    "redux-observable": "^1.1.0",
+    "reselect": "^4.0.0",
+    "rxjs": "^6.5.2",
+    "typescript": "^3.5.3"
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.8",
+    "@types/enzyme": "^3.9.2",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "24.0.12",
+    "@types/lodash": "^4.14.133",
+    "@types/react": "16.8.17",
+    "@types/react-dom": "16.8.4",
+    "@types/react-modal": "^3.8.2",
+    "@types/react-redux": "^7.0.9",
+    "@types/react-router-dom": "^4.3.3",
+    "@types/react-toastify": "^4.0.2",
+    "@types/redux-testkit": "^1.0.3",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.1",
+    "husky": "^3.0.2",
+    "lint-staged": "^9.2.1",
+    "node-sass": "^4.12.0",
+    "prettier": "1.17.1",
+    "pretty-quick": "^1.11.0",
+    "react-test-renderer": "^16.8.6",
+    "redux-testkit": "^1.0.6",
+    "stylelint": "^10.0.1",
+    "stylelint-config-sass-guidelines": "^6.0.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^3.6.0",
+    "typesafe-actions": "^4.4.0",
+    "webpack-cli": "^3.3.7"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "test-ci": "react-scripts test --watchAll=false",
+    "eject": "react-scripts eject",
+    "lint": "tslint --project .",
+    "watch": "webpack -d --watch",
+    "tslint": "tslint 'src/**/*.ts?(x)'",
+    "lint:fix": "tslint --fix --project ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{ts,tsx,js,jsx}": [
+      "tslint -p .",
+      "tslint --fix",
+      "prettier --config ./.prettierrc --write",
+      "git add"
+    ],
+    "src/**/*.{css,scss,sass}": [
+      "prettier --write",
+      "git add --force"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

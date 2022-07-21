@@ -1,4 +1,4 @@
 import { combineEpics } from 'redux-observable';
-import { userInfoEpics } from '../../features/userInfo';
+import { userEpics } from '../../features/user/epics';
 
-export default combineEpics(userInfoEpics);
+export default combineEpics(userEpics);

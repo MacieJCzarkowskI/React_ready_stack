@@ -1,1 +1,1 @@
-declare module "Types";
+declare module 'Types';

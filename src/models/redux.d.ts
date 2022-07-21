@@ -1,0 +1,3 @@
+interface IRedux {
+	user: IUserModel;
+}

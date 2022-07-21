@@ -1,5 +1,5 @@
-import services from "./index";
+import services from './index';
 
-declare module "Types" {
-  type Services = typeof services;
+declare module 'Types' {
+	type Services = typeof services;
 }

@@ -2,14 +2,18 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import store from './appConfig/store';
-import HomePage from './components/HomePage';
+import { ChakraProvider } from '@chakra-ui/react';
+import { customTheme } from './theme';
+import Wrapper from './AppWrapper';
 
 const App: React.FC = () => {
-  return (
-    <Provider store={store}>
-      <HomePage />
-    </Provider>
-  );
+	return (
+		<Provider store={store}>
+			<ChakraProvider theme={customTheme} resetCSS>
+				<Wrapper />
+			</ChakraProvider>
+		</Provider>
+	);
 };
 
 export default App;

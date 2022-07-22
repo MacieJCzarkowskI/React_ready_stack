@@ -2,6 +2,7 @@ import * as React from 'react';
 import { useAppSelector, useAppDispatch } from '../../utils/reduxUtils';
 import { useEffect } from 'react';
 import { getUserData } from '../../features/user/actions';
+import Example from '../../components/ExampleComponent/example';
 
 const HomePage = () => {
 	const { name, lastName } = useAppSelector(state => state.user);
@@ -11,12 +12,7 @@ const HomePage = () => {
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
-	return (
-		<div>
-			<div>Name: {name}</div>
-			<div>Last Name: {lastName}</div>
-		</div>
-	);
+	return <Example name={name} lastName={lastName} />;
 };
 
 export default HomePage;

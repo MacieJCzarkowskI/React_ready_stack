@@ -24,6 +24,7 @@
     "sort-imports": false,
     "ordered-imports": false,
     "no-string-literal": false,
-    "jsx-no-lambda": false
+    "jsx-no-lambda": false,
+    "jsx-boolean-value": false
   }
 }

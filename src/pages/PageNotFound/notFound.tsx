@@ -1,20 +1,23 @@
 import React from 'react';
 import { Box, Flex, Text } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export const PageNotFound = () => {
+	const { t } = useTranslation();
+
 	return (
 		<Flex flexDirection="column" height="100vh" justifyContent="center" alignItems="center">
-			<Box fontSize="32px">EXAMPLE</Box>
+			<Box fontSize="32px">{t('pageNotFound.header')}</Box>
 			<Flex fontSize="42px" color="fuchsia">
-				[404] - PAGE NOT FOUND
+				{t('pageNotFound.subheader')}
 			</Flex>
 			<Flex fontSize="20px">
-				Click
+				{t('pageNotFound.click')}
 				<Text m="0 5px" color="red" _hover={{ color: 'fuchsia' }}>
 					<Link to="/">here</Link>
 				</Text>
-				to return to Homepage{' '}
+				{t('pageNotFound.return')}
 			</Flex>
 		</Flex>
 	);

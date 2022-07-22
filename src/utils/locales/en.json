@@ -1,0 +1,18 @@
+{
+  "pageNotFound": {
+    "header": "Example page",
+    "subheader": "[404] - PAGE NOT FOUND",
+    "click": "Click",
+    "here": "here",
+    "return": "to return to Homepage"
+  },
+  "login": {
+    "userHeader": "User",
+    "userPlaceholder": "Enter user",
+    "passwordHeader": "Password",
+    "passwordPlaceholder": "Enter password",
+    "login": "Login",
+    "show": "Show",
+    "hide": "Hide"
+  }
+}

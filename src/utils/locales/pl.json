@@ -1,0 +1,18 @@
+{
+  "pageNotFound": {
+    "header": "Przykładowa strona",
+    "subheader": "Nie znaleziono strony [404]",
+    "click": "Kliknij",
+    "here": "tutaj",
+    "return": "by powrócić na stronę główną"
+  },
+  "login": {
+    "userHeader": "Użytkownik",
+    "userPlaceholder": "Wpisz użytkownika",
+    "passwordHeader": "Hasło",
+    "passwordPlaceholder": "Wpisz hasło",
+    "login": "Zaloguj",
+    "show": "Pokaż",
+    "hide": "Ukryj"
+  }
+}

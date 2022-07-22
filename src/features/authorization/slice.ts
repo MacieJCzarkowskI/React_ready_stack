@@ -6,7 +6,7 @@ import { IAuthorization } from '../../models/authorization/authorization';
 import { isLoading, setIsLogged } from './actions';
 
 export const initialAuth: IAuthorization = {
-	loading: false,
+	loading: true,
 	isLogged: false,
 };
 

@@ -7,6 +7,7 @@ import HomePage from './pages/HomePage/home';
 import Login from './pages/LoginPage/login';
 import { useAppDispatch, useAppSelector } from './utils/reduxUtils';
 import { checkIfLogged } from './features/authorization/actions';
+import { Box, useColorModeValue } from '@chakra-ui/react';
 
 const pages = [
 	{
@@ -30,19 +31,23 @@ const Wrapper = () => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(checkIfLogged());
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
+	const bg = useColorModeValue('white', 'gray.800');
+	const color = useColorModeValue('#1b91d6', '#976cbd');
+
 	return (
-		<BrowserRouter>
-			<Routes>
-				{pages.map(({ path, element, id }) => (
-					<Route path={path} element={element} key={id} />
-				))}
-				{privatePages.map(({ path, additionalPath, element, id }) => PrivateRoute({ path, key: id, additionalPath, isLogged, loading, element }))}
-				<Route path="*" element={<PageNotFound />} />
-			</Routes>
-		</BrowserRouter>
+		<Box minHeight="100vh" bg={bg} color={color}>
+			<BrowserRouter>
+				<Routes>
+					{pages.map(({ path, element, id }) => (
+						<Route path={path} element={element} key={id} />
+					))}
+					{privatePages.map(({ path, additionalPath, element, id }) => PrivateRoute({ path, key: id, additionalPath, isLogged, loading, element }))}
+					<Route path="*" element={<PageNotFound />} />
+				</Routes>
+			</BrowserRouter>
+		</Box>
 	);
 };
 

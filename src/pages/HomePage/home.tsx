@@ -9,7 +9,6 @@ const HomePage = () => {
 	const dispatch = useAppDispatch();
 	useEffect(() => {
 		dispatch(getUserData());
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	return <Example name={name} lastName={lastName} />;

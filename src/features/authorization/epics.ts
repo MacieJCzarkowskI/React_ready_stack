@@ -1,10 +1,11 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-nested-ternary */
 import { combineEpics } from 'redux-observable';
-import { catchError, filter, switchMap, withLatestFrom } from 'rxjs/operators';
-import { concat, of } from 'rxjs';
+import { catchError, delay, filter, switchMap, withLatestFrom } from 'rxjs/operators';
+import { concat, EMPTY, of } from 'rxjs';
 import { AppEpic } from '../../utils/reduxUtils';
-import { checkIfLogged, isLoading, login, setIsLogged } from './actions';
+import { checkIfLogged, isLoading, login, logout, setIsLogged } from './actions';
+import { fromPromise } from 'rxjs/internal-compatibility';
 
 export const Login: AppEpic<ReturnType<typeof login>> = (action$, state$, { authorization }) =>
 	action$.pipe(
@@ -13,18 +14,35 @@ export const Login: AppEpic<ReturnType<typeof login>> = (action$, state$, { auth
 		switchMap(([action, state]) => {
 			return concat(
 				of(isLoading(true)),
-				authorization.login(action.payload).pipe(
-					switchMap((AjaxResponse: any) => {
-						// const { response } = AjaxResponse;
-						return concat(of(setIsLogged({ isLogged: true })));
+				// authorization.login(action.payload).pipe(
+				fromPromise(
+					new Promise((resolve, reject) => {
+						setTimeout(() => {
+							resolve({});
+						}, 500);
 					}),
-					catchError((err: any) => {
+				).pipe(
+					switchMap((AjaxResponse: any) => {
 						window.location.replace('/');
 						localStorage.setItem('id', 'example_id');
 						return concat(of(setIsLogged({ isLogged: true })));
 					}),
+					catchError((err: any) => {
+						return concat(of(setIsLogged({ isLogged: false })));
+					}),
 				),
 			);
+		}),
+	);
+
+export const Logout: AppEpic<ReturnType<typeof logout>> = (action$, state$, { authorization }) =>
+	action$.pipe(
+		filter(logout.match),
+		withLatestFrom(state$),
+		switchMap(([action, state]) => {
+			localStorage.removeItem('id');
+			window.location.replace('/');
+			return EMPTY;
 		}),
 	);
 
@@ -41,4 +59,4 @@ export const CheckIfLoggedEpic: AppEpic<ReturnType<typeof checkIfLogged>> = (act
 		}),
 	);
 
-export const authEpics = combineEpics(Login, CheckIfLoggedEpic);
+export const authEpics = combineEpics(Login, CheckIfLoggedEpic, Logout);

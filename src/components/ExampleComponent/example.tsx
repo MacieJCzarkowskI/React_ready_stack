@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Flex } from '@chakra-ui/react';
+import { Box, Flex, Text } from '@chakra-ui/react';
 
 interface IExample {
 	name: string;
@@ -7,10 +7,27 @@ interface IExample {
 }
 const Example = ({ name, lastName }: IExample) => {
 	return (
-		<Flex w="100%" h="100vh" alignItems="center" flexDir="column" justifyContent="center">
-			<Box border="1px solid red" p="15px">
-				<Box>Name: {name}</Box>
-				<Box>Last Name: {lastName}</Box>
+		<Flex w="100%" h="100%" alignSelf="flex-start">
+			<Box
+				borderRadius="var(--chakra-radii-lg)"
+				boxShadow="var(--chakra-shadows-sm)"
+				bg="whiteAlpha.900"
+				border="1px solid var(--chakra-colors-brand-500)"
+				p="15px"
+			>
+				<Flex>
+					<Text fontWeight="semibold" fontSize="md">
+						Name:
+					</Text>
+					{name}
+				</Flex>
+
+				<Flex>
+					<Text fontWeight="semibold" fontSize="md">
+						Last Name:
+					</Text>
+					{lastName}
+				</Flex>
 			</Box>
 		</Flex>
 	);
